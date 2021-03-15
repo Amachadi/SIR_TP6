@@ -17,7 +17,9 @@ function DnD(canvas, interactor) {
   {
 
     this.press=true;
-
+    interactor.onInteractionStart(this);
+    interactor.onInteractionUpdate(this);
+    interactor.onInteractionEnd(this);
     console.log("press");
 
 
@@ -36,6 +38,9 @@ function DnD(canvas, interactor) {
 
 
       console.log(res);
+      interactor.onInteractionStart(this);
+      interactor.onInteractionUpdate(this);
+      interactor.onInteractionEnd(this);
     }
 
   }.bind(this); // lier la méthode à la classe DnD
@@ -51,6 +56,9 @@ function DnD(canvas, interactor) {
 
 
       console.log(res);
+      interactor.onInteractionStart(this);
+      interactor.onInteractionUpdate(this);
+      interactor.onInteractionEnd(this);
     }
 
 
