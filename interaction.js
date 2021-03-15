@@ -10,6 +10,7 @@ function DnD(canvas, interactor) {
   this.x2=0;
   this.y2=0;
   this.press=false;
+
 	// Developper les 3 fonctions gérant les événements
 
   this.pression = function(event)
@@ -19,10 +20,10 @@ function DnD(canvas, interactor) {
 
     console.log("press");
 
-    interactor.onInteractionStart(this);
 
 
-  }.bind(this); // lies la method a la classe Dnd
+
+  }.bind(this); // lier la méthode à la classe DND
 
   this.deplacer= function(event)
   {
@@ -32,7 +33,7 @@ function DnD(canvas, interactor) {
       this.x2=res.x;
       this.y2=res.y;
 
-      interactor.onInteractionUpdate(this);
+
 
       console.log(res);
     }
@@ -47,7 +48,7 @@ function DnD(canvas, interactor) {
       this.x2=res.x;
       this.y2=res.y;
 
-      interactor.onInteractionEnd(this);
+
 
       console.log(res);
     }
