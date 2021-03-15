@@ -23,7 +23,7 @@ function DnD(canvas, interactor) {
 
 
 
-  }.bind(this); // lier la méthode à la classe DND
+  }.bind(this); // lier la méthode à la classe DnD
 
   this.deplacer= function(event)
   {
@@ -38,7 +38,7 @@ function DnD(canvas, interactor) {
       console.log(res);
     }
 
-  }.bind(this); // lies la method a la classe Dnd
+  }.bind(this); // lier la méthode à la classe DnD
 
   this.relacher = function(event)
   {
@@ -54,7 +54,7 @@ function DnD(canvas, interactor) {
     }
 
 
-  }.bind(this); // lies la method a la classe Dnd
+  }.bind(this); // lier la méthode à la classe DnD
 	// Associer les fonctions précédentes aux évènements du canvas.
   canvas.addEventListener('mousedown', this.pression, false);
   canvas.addEventListener('mousemove', this.deplacer, false);
