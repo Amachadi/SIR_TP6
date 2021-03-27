@@ -17,9 +17,10 @@ function DnD(canvas, interactor) {
   {
 
     this.press=true;
-    interactor.onInteractionStart(this);
-    interactor.onInteractionUpdate(this);
-    interactor.onInteractionEnd(this);
+    this.interactor.onInteractionStart(this);
+    //Appeler dans chacune des 3 fonctions console.log pour afficher dans la console
+    // Javascript de votre navigateur
+    // les coordonnées de chaque événement lors de l'exécution de l'interaction.
     console.log("press");
 
 
@@ -29,18 +30,17 @@ function DnD(canvas, interactor) {
 
   this.deplacer= function(event)
   {
-    if(this.press)
+    if(this.press) //si une pression a été effectuée au préalable.
     {
       var res=getMousePosition(canvas,event);
       this.x2=res.x;
       this.y2=res.y;
-
-
-
+//Appeler dans chacune des 3 fonctions console.log pour afficher dans la console
+// Javascript de votre navigateur
+// les coordonnées de chaque événement lors de l'exécution de l'interaction.
+      this.interactor.onInteractionUpdate(this);
       console.log(res);
-      interactor.onInteractionStart(this);
-      interactor.onInteractionUpdate(this);
-      interactor.onInteractionEnd(this);
+
     }
 
   }.bind(this); // lier la méthode à la classe DnD
@@ -53,17 +53,18 @@ function DnD(canvas, interactor) {
       this.x2=res.x;
       this.y2=res.y;
 
-
-
+      //Appeler dans chacune des 3 fonctions console.log pour afficher dans la console
+      // Javascript de votre navigateur
+      // les coordonnées de chaque événement lors de l'exécution de l'interaction.
+      this.interactor.onInteractionEnd(this);
       console.log(res);
-      interactor.onInteractionStart(this);
-      interactor.onInteractionUpdate(this);
-      interactor.onInteractionEnd(this);
+
     }
 
 
   }.bind(this); // lier la méthode à la classe DnD
 	// Associer les fonctions précédentes aux évènements du canvas.
+   //Enregistrer chaque fonction auprès du canvas.
   canvas.addEventListener('mousedown', this.pression, false);
   canvas.addEventListener('mousemove', this.deplacer, false);
   canvas.addEventListener('mouseup', this.relacher, false);
