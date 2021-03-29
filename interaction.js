@@ -17,7 +17,7 @@ function DnD(canvas, interactor) {
   {
 
     this.press=true;
-    this.interactor.onInteractionStart(this);
+    interactor.onInteractionStart(this);
     //Appeler dans chacune des 3 fonctions console.log pour afficher dans la console
     // Javascript de votre navigateur
     // les coordonnées de chaque événement lors de l'exécution de l'interaction.
@@ -38,7 +38,7 @@ function DnD(canvas, interactor) {
 //Appeler dans chacune des 3 fonctions console.log pour afficher dans la console
 // Javascript de votre navigateur
 // les coordonnées de chaque événement lors de l'exécution de l'interaction.
-      this.interactor.onInteractionUpdate(this);
+      interactor.onInteractionUpdate(this);
       console.log(res);
 
     }
@@ -56,7 +56,7 @@ function DnD(canvas, interactor) {
       //Appeler dans chacune des 3 fonctions console.log pour afficher dans la console
       // Javascript de votre navigateur
       // les coordonnées de chaque événement lors de l'exécution de l'interaction.
-      this.interactor.onInteractionEnd(this);
+      interactor.onInteractionEnd(this);
       console.log(res);
 
     }

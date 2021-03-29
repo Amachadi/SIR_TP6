@@ -52,12 +52,4 @@ Line.prototype.paint = function(ctx) {
     console.log(this);
 
 };
-Drawing.prototype.paint = function(ctx) {
-    console.log(this.forms);
-    ctx.fillStyle = '#F0F0F0'; // set canvas' background color
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    this.forms.forEach(function(eltDuTableau) {
-        // now fill the canvas
-        eltDuTableau.paint(ctx);
-    });
-};
+
