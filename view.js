@@ -21,7 +21,7 @@ Line.prototype.paint = function(ctx) {
     ctx.lineTo(this.x2,this.y2);
     ctx.stroke();
 };
-
+//
 
 Drawing.prototype.paint = function(ctx) {
     console.log(this.forms);
