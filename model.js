@@ -1,44 +1,45 @@
-
 // Implémenter ici les 4 classes du modèle.
 // N'oubliez pas l'héritage !
 //Une forme possède une couleur et une épaisseur de trait.
-function Forme(couleur,epaisseur) {
-    this.couleur=couleur;
-    this.epaisseur=epaisseur;
+function Form(color, thick) {
+    this.color = color;
+    this.thick = thick;
 }
 //Un rectangle possède des coordonnées de son point haut-gauche, une largeur et une hauteur.
-function Rectangle(largeur,hauteur,x,y,epaisseur,couleur)
-{
-    Forme.call(this,couleur,epaisseur);
-    this.largeur=largeur;
-    this.hauteur=hauteur;
-    this.x=x;
-    this.y=y;
-}
-//Un prototype est un objet à partir duquel il est possible d'en créer de nouveaux (des duplicata)
-Rectangle.prototype=new Forme();
-//Une ligne possède les coordonnées de ses deux points.
-function Line(x1,y1,x2,y2,epaisseur,couleur)
-{
-    Forme.call(this,couleur,epaisseur);
-    this.x1=x1;
-    this.y1=y1;
-    this.x2=x2;
-    this.y2=y2;
+function Rectangle(x, y, width, heigth, color, thick) {
+    Form.call(this, color, thick);
+    this.x = x;
+    this.y = y;
+    this.width = width;
+    this.heigth = heigth;
 }
 
-Line.prototype=new Forme();
+//Une ligne possède les coordonnées de ses deux points.
+function Line(xBegin, yBegin, xEnd, yEnd, color, thick) {
+    Form.call(this, color, thick);
+    this.xBegin = xBegin;
+    this.yBegin = yBegin;
+    this.xEnd = xEnd;
+    this.yEnd = yEnd;
+}
+
 //classe Drawing se composant de formes (on utilise pour cela Array pour gérer la liste des formes d’un dessin)
-function Drawing()
-{
-    this.forms=new Array();
+function Drawing() {
+    this.formList = [];
+
+    this.addForm = function (formList) {
+        this.formList.push(formList)
+    }.bind(this);
 }
-Rectangle.prototype.paint = function(ctx) {
-//TODO Manager color
-    console.log('pass par la')
-    ctx.rect(this.x, this.y, this.x + this.largeur, this.y + this.hauteur);
-    ctx.stroke();
-}
+
+
+//héritage !
+Rectangle.prototype = new Form();
+Line.prototype = new Form();
+
+
+/*
+
 Line.prototype.paint = function(ctx) {
 //TODO Manager color
 
@@ -52,4 +53,4 @@ Line.prototype.paint = function(ctx) {
     console.log(this);
 
 };
-
+*/

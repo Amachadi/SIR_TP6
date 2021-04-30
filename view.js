@@ -1,34 +1,28 @@
 
 // Implémenter ici les fonctions paint à ajouter dans chacune des classes du modèle.
-Forme.prototype.clear = function(ctx) {
-    canvas.getContext('2d').fillStyle = '#F0F0F0'; // set canvas' background color
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-};
 
-
-Rectangle.prototype.paint = function(ctx) {
-    ctx.lineWidth = this.epaisseur();
-    ctx.strokeStyle=this.couleur();
-    ctx.rect(this.x,this.y,this.hauteur,this.largeur);
-    ctx.stroke();
-};
-
-Line.prototype.paint = function(ctx) {
-    ctx.lineWidth = this.epaisseur();
-    ctx.strokeStyle=this.couleur();
+Rectangle.prototype.paint = function (ctx) {
+    ctx.lineWidth = this.thick;
+    ctx.strokeStyle = this.color;  
     ctx.beginPath();
-    ctx.moveTo(this.x1,this.y1);
-    ctx.lineTo(this.x2,this.y2);
+    ctx.rect(this.x, this.y, this.width, this.height);
     ctx.stroke();
 };
-//
 
-Drawing.prototype.paint = function(ctx) {
-    console.log(this.forms);
+Line.prototype.paint = function (ctx) {
+     ctx.lineWidth = this.thick;
+    ctx.strokeStyle = this.color; 
+    ctx.beginPath();
+    ctx.moveTo(this.xBegin, this.yBegin);
+    ctx.lineTo(this.xEnd, this.yEnd);
+    ctx.stroke();
+};
+
+
+Drawing.prototype.paint = function (ctx) {
     ctx.fillStyle = '#F0F0F0'; // set canvas' background color
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    this.forms.forEach(function(eltDuTableau) {
-        // now fill the canvas
-        eltDuTableau.paint(ctx);
+    this.formList.forEach(function (form) {
+        form.paint(ctx);
     });
-};
+}
