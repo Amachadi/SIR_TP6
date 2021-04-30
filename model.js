@@ -1,56 +1,48 @@
 // Implémenter ici les 4 classes du modèle.
-// N'oubliez pas l'héritage !
-//Une forme possède une couleur et une épaisseur de trait.
-function Form(color, thick) {
+
+function Form(color, epaisseur) {
     this.color = color;
-    this.thick = thick;
+    this.epaisseur = epaisseur;
 }
-//Un rectangle possède des coordonnées de son point haut-gauche, une largeur et une hauteur.
-function Rectangle(x, y, width, heigth, color, thick) {
-    Form.call(this, color, thick);
+
+function Rectangle(x, y, largeur, hauteur, color, epaisseur) {
+    Form.call(this, color, epaisseur);
     this.x = x;
     this.y = y;
-    this.width = width;
-    this.heigth = heigth;
+    this.largeur = largeur;
+    this.hauteur = hauteur;
+    this.type = "Rectangle" ;
 }
 
-//Une ligne possède les coordonnées de ses deux points.
-function Line(xBegin, yBegin, xEnd, yEnd, color, thick) {
-    Form.call(this, color, thick);
-    this.xBegin = xBegin;
-    this.yBegin = yBegin;
-    this.xEnd = xEnd;
-    this.yEnd = yEnd;
+function Line(xInitial, yInitial, xFinal, yFinal, color, epaisseur) {
+    Form.call(this, color, epaisseur);
+    this.xInitial = xInitial;
+    this.yInitial = yInitial;
+    this.xFinal = xFinal;
+    this.yFinal = yFinal;
+    this.type = "Ligne" ;
 }
 
-//classe Drawing se composant de formes (on utilise pour cela Array pour gérer la liste des formes d’un dessin)
 function Drawing() {
     this.formList = [];
 
-    this.addForm = function (formList) {
-        this.formList.push(formList)
+    this.addForm = function (form) {
+        this.formList.push(form)
     }.bind(this);
+
+    this.removeForm = function (form, ) {
+        this.formList  = this.formList.filter(val=> { return val !== form }) ; 
+       document.getElementById("shapeList").innerHTML = "" ; 
+       this.paint(ctx);
+       this.formList.forEach(function (form) {
+        updateShapeList(form) ; 
+        });
+    }.bind(this);
+
+
 }
 
 
 //héritage !
 Rectangle.prototype = new Form();
 Line.prototype = new Form();
-
-
-/*
-
-Line.prototype.paint = function(ctx) {
-//TODO Manager color
-
-
-
-    ctx.beginPath();
-    ctx.moveTo(this.x1 ,this.y1);
-    ctx.lineTo(this.x2,this.y2);
-    ctx.stroke();
-
-    console.log(this);
-
-};
-*/
